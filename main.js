@@ -39,5 +39,14 @@ input.prompt([
         name: "email"
     }
 ]).then(function(input) {
-    console.log(input);
+    output.writeFile("README.md", styleREADME(input), function(error) {
+        error ? console.error(error) : console.log("README.md created successfully.");
+    });
 });
+
+function styleREADME(input) {
+    let result = "# " + input.title + "\n";
+    result    +=        input.desc  + "\n";
+    
+    return result;
+}
