@@ -1,10 +1,11 @@
 const input = require("inquirer");
 const output = require("fs");
+const markdown = require("/generateMarkdown.js");
 
-input.prompt([
+const questions = [
     {
         message: "Title:",
-        name: "title"
+        name: "docTitle"
     },
     {
         message: "Description:",
@@ -12,7 +13,7 @@ input.prompt([
     },
     {
         message: "Installation Instructions:",
-        name: "instInstructions"
+        name: "inst"
     },
     {
         message: "Usage Info:",
@@ -24,9 +25,16 @@ input.prompt([
     },
     {
         message: "Test Instructions:",
-        name: "testInstructions"
+        name: "test"
     },
     {
+        type: "list",
+        choices: [
+            "MIT",
+            "Apache-2.0",
+            "ISC",
+            "EPL-1.0"
+        ],
         message: "License:",
         name: "license"
     },
@@ -38,15 +46,18 @@ input.prompt([
         message: "Email:",
         name: "email"
     }
-]).then(function(input) {
-    output.writeFile("README.md", styleREADME(input), function(error) {
+];
+
+function writeToFile(fileName, data) {
+    output.writeFile(fileName, markdown.generateMarkdown(data), function(error) {
         error ? console.error(error) : console.log("README.md created successfully.");
     });
-});
-
-function styleREADME(input) {
-    let result = "# " + input.title + "\n";
-    result    +=        input.desc  + "\n";
-    
-    return result;
 }
+
+function init() {
+    input.prompt(questions).then(function(input) {
+        writeToFile("README.md", );
+    });
+}
+
+init();
