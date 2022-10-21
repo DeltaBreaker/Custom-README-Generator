@@ -1,6 +1,6 @@
 const input = require("inquirer");
 const output = require("fs");
-const markdown = require("/generateMarkdown.js");
+const markdown = require("./generateMarkdown.js");
 
 const questions = [
     {
@@ -56,7 +56,7 @@ function writeToFile(fileName, data) {
 
 function init() {
     input.prompt(questions).then(function(input) {
-        writeToFile("README.md", );
+        writeToFile("README.md", input);
     });
 }
 
