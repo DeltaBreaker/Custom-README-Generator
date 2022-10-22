@@ -1,4 +1,4 @@
-# Custom READNE Generator
+# Custom README Generator
 This README generator takes in user input for the title, description, installation instructions, usage info, contribution guidelines, test instructions, the attached license, github username, and email address and outputs a complete, well organized README file. When choosing a license, a badge will be displayed at the top which will redirect to the respective license when clicked. A link will also be added in the license section.
 
 ## A preview of the user prompts:
